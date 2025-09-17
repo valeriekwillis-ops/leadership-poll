@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Impact Survey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .vote-bar {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: left;
+        }
+        .vote-option {
+            transition: all 0.3s ease;
+        }
+        .vote-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8 slide-up">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                ?? Leadership Impact Survey
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                When you think about the most successful leaders you've worked with, 
+                which outcomes best describe their impact on the team?
+            </p>
+        </div>
+
+        <!-- Poll Container -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <!-- Question -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+                    Select all that apply to great leaders you've experienced:
+                </h2>
+            </div>
+
+            <!-- Voting Options -->
+            <div id="votingSection" class="space-y-4 mb-8">
+                <div class="vote-option bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-200 rounded-xl p-6 cursor-pointer" data-option="team-performance">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">??</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Improved Team Performance</h3>
+                                <p class="text-gray-600">Team consistently exceeded goals and delivered high-quality results</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-blue-400 rounded bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="vote-option bg-gradient-to-r from-green-50 to-green-100 border-2 border-green-200 rounded-xl p-6 cursor-pointer" data-option="employee-engagement">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">??</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Higher Employee Engagement</h3>
+                                <p class="text-gray-600">People were more motivated, enthusiastic, and committed to their work</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-green-400 rounded bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="vote-option bg-gradient-to-r from-purple-50 to-purple-100 border-2 border-purple-200 rounded-xl p-6 cursor-pointer" data-option="innovation-creativity">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">??</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Increased Innovation & Creativity</h3>
+                                <p class="text-gray-600">Team generated more creative solutions and innovative approaches</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-purple-400 rounded bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="vote-option bg-gradient-to-r from-orange-50 to-orange-100 border-2 border-orange-200 rounded-xl p-6 cursor-pointer" data-option="better-communication">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">???</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Better Communication & Collaboration</h3>
+                                <p class="text-gray-600">Improved transparency, feedback, and teamwork across the organization</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-orange-400 rounded bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="vote-option bg-gradient-to-r from-teal-50 to-teal-100 border-2 border-teal-200 rounded-xl p-6 cursor-pointer" data-option="talent-development">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">??</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">Enhanced Talent Development</h3>
+                                <p class="text-gray-600">People grew their skills, advanced their careers, and reached their potential</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-teal-400 rounded bg-white"></div>
+                    </div>
+                </div>
+
+                <div class="vote-option bg-gradient-to-r from-red-50 to-red-100 border-2 border-red-200 rounded-xl p-6 cursor-pointer" data-option="positive-culture">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-3xl">??</div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">More Positive Work Culture</h3>
+                                <p class="text-gray-600">Created an environment of trust, respect, and psychological safety</p>
+                            </div>
+                        </div>
+                        <div class="checkbox w-6 h-6 border-2 border-red-400 rounded bg-white"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button id="submitBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Submit Your Response
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="bg-white rounded-2xl shadow-xl p-8 hidden">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">?? Live Results</h2>
+            
+            <div class="space-y-6" id="resultsContainer">
+                <!-- Results will be populated here -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="voteAgainBtn" class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105">
+                    Vote Again
+                </button>
+            </div>
+
+            <div class="text-center mt-6">
+                <p class="text-gray-600">
+                    <span id="totalVotes" class="font-semibold">0</span> responses collected
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Poll data structure
+        const pollData = {
+            'team-performance': { count: 0, label: 'Improved Team Performance', emoji: '??', color: 'blue' },
+            'employee-engagement': { count: 0, label: 'Higher Employee Engagement', emoji: '??', color: 'green' },
+            'innovation-creativity': { count: 0, label: 'Increased Innovation & Creativity', emoji: '??', color: 'purple' },
+            'better-communication': { count: 0, label: 'Better Communication & Collaboration', emoji: '???', color: 'orange' },
+            'talent-development': { count: 0, label: 'Enhanced Talent Development', emoji: '??', color: 'teal' },
+            'positive-culture': { count: 0, label: 'More Positive Work Culture', emoji: '??', color: 'red' }
+        };
+
+        let selectedOptions = new Set();
+        let totalResponses = 0;
+
+        // Color mappings for Tailwind classes
+        const colorClasses = {
+            blue: { bg: 'bg-blue-500', border: 'border-blue-200', text: 'text-blue-700' },
+            green: { bg: 'bg-green-500', border: 'border-green-200', text: 'text-green-700' },
+            purple: { bg: 'bg-purple-500', border: 'border-purple-200', text: 'text-purple-700' },
+            orange: { bg: 'bg-orange-500', border: 'border-orange-200', text: 'text-orange-700' },
+            teal: { bg: 'bg-teal-500', border: 'border-teal-200', text: 'text-teal-700' },
+            red: { bg: 'bg-red-500', border: 'border-red-200', text: 'text-red-700' }
+        };
+
+        // Handle option selection
+        document.querySelectorAll('.vote-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const optionId = this.dataset.option;
+                const checkbox = this.querySelector('.checkbox');
+                
+                if (selectedOptions.has(optionId)) {
+                    selectedOptions.delete(optionId);
+                    checkbox.innerHTML = '';
+                    checkbox.classList.remove('bg-blue-500', 'border-blue-500');
+                    checkbox.classList.add('bg-white');
+                } else {
+                    selectedOptions.add(optionId);
+                    checkbox.innerHTML = '<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>';
+                    checkbox.classList.remove('bg-white');
+                    checkbox.classList.add('bg-blue-500', 'border-blue-500');
+                }
+                
+                // Enable/disable submit button
+                document.getElementById('submitBtn').disabled = selectedOptions.size === 0;
+            });
+        });
+
+        // Handle form submission
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            if (selectedOptions.size === 0) return;
+            
+            // Update vote counts
+            selectedOptions.forEach(optionId => {
+                pollData[optionId].count++;
+            });
+            totalResponses++;
+            
+            // Show results
+            showResults();
+            
+            // Reset selections
+            selectedOptions.clear();
+            document.querySelectorAll('.checkbox').forEach(checkbox => {
+                checkbox.innerHTML = '';
+                checkbox.classList.remove('bg-blue-500', 'border-blue-500');
+                checkbox.classList.add('bg-white');
+            });
+        });
+
+        // Show results section
+        function showResults() {
+            document.getElementById('votingSection').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('resultsSection').classList.remove('hidden');
+            document.getElementById('resultsSection').classList.add('slide-up');
+            
+            renderResults();
+        }
+
+        // Render results with animated bars
+        function renderResults() {
+            const container = document.getElementById('resultsContainer');
+            const totalVotesElement = document.getElementById('totalVotes');
+            
+            // Calculate total votes (sum of all individual votes, not responses)
+            const totalVotes = Object.values(pollData).reduce((sum, option) => sum + option.count, 0);
+            totalVotesElement.textContent = totalResponses;
+            
+            container.innerHTML = '';
+            
+            // Sort options by vote count (descending)
+            const sortedOptions = Object.entries(pollData).sort((a, b) => b[1].count - a[1].count);
+            
+            sortedOptions.forEach(([optionId, data]) => {
+                const percentage = totalVotes > 0 ? (data.count / totalVotes * 100) : 0;
+                const colors = colorClasses[data.color];
+                
+                const resultItem = document.createElement('div');
+                resultItem.className = `border-2 ${colors.border} rounded-xl p-6 bg-gradient-to-r from-gray-50 to-white`;
+                
+                resultItem.innerHTML = `
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">${data.emoji}</span>
+                            <h3 class="font-semibold text-gray-800">${data.label}</h3>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-2xl font-bold ${colors.text}">${data.count}</span>
+                            <span class="text-sm text-gray-500 ml-1">votes</span>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                        <div class="vote-bar h-4 ${colors.bg} rounded-full flex items-center justify-end pr-2" 
+                             style="width: 0%">
+                            <span class="text-xs font-semibold text-white">${percentage.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(resultItem);
+                
+                // Animate the bar
+                setTimeout(() => {
+                    const bar = resultItem.querySelector('.vote-bar');
+                    bar.style.width = `${Math.max(percentage, 5)}%`; // Minimum 5% for visibility
+                }, 100);
+            });
+        }
+
+        // Vote again functionality
+        document.getElementById('voteAgainBtn').addEventListener('click', function() {
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('votingSection').style.display = 'block';
+            document.getElementById('submitBtn').style.display = 'block';
+            document.getElementById('submitBtn').disabled = true;
+        });
+
+        // Initialize
+        document.getElementById('submitBtn').disabled = true;
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980a0834c2bc1455',t:'MTc1ODEyNzA4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
